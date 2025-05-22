@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 04:07 PM
+-- Generation Time: May 22, 2025 at 04:41 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,9 +31,16 @@ CREATE TABLE `album` (
   `id` int(11) NOT NULL,
   `nama_album` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `album`
+--
+
+INSERT INTO `album` (`id`, `nama_album`, `deskripsi`, `created_at`, `updated_at`) VALUES
+(3, 'Album 1', 'Demon Slayer', '0000-00-00 00:00:00', '2025-05-22 09:08:54');
 
 -- --------------------------------------------------------
 
@@ -72,6 +79,13 @@ CREATE TABLE `tb_profil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `tb_profil`
+--
+
+INSERT INTO `tb_profil` (`id`, `nama`, `nim`, `tgl_lahir`, `jk`, `alamat`) VALUES
+(1, 'Rizky Aldiansyah', 20240314, '2008-04-10', 'Laki-Laki', 'Gumulung Lebak');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -101,7 +115,7 @@ ALTER TABLE `tb_profil`
 -- AUTO_INCREMENT for table `album`
 --
 ALTER TABLE `album`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -113,7 +127,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `tb_profil`
 --
 ALTER TABLE `tb_profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
